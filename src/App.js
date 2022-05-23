@@ -1,6 +1,7 @@
 import Navbar from './Pages/Shared/Navbar';
 import { Routes, Route, Link } from "react-router-dom";
 import Home from './Pages/Home/Home';
+import Purchase from './Pages/Purchase/Purchase';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/purchase/:productId' element={<Purchase></Purchase>}></Route>
         <Route path='/dashboard' element={<Home></Home>}></Route>
         <Route path='/blogs' element={<Home></Home>}></Route>
         <Route path='/login' element={<Home></Home>}></Route>

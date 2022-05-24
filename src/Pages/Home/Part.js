@@ -29,7 +29,7 @@ const Part = ({ part }) => {
                 <p className='font-semibold'>Minimum Order: {minOrder} PCS</p>
                 <p className='font-semibold'>Available Quantity: {qty} {qty <= 1 ? 'PC' : 'PCS'}</p>
                 <div className="card-actions justify-end">
-                    <button class="btn btn-outline btn-success btn-md" onClick={() => handlePurcahsePage(_id)}>Purchase</button>
+                    <button className="btn btn-outline btn-success btn-md" onClick={() => handlePurcahsePage(_id)}>Purchase</button>
                 </div>
             </div>
         </div>

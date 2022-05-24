@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import DetailHeader from '../Shared/DetailHeader';
 import Part from './Part';
 
 const Parts = () => {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        fetch('parts.json')
+        fetch('http://localhost:4000/product')
             .then(res => res.json())
             .then(data => setParts(data));
     }, []);
 
     return (
         <div>
-            <h2 className="text-xl text-primary font-semibold text-center mt-12">What We Provide</h2>
-            <h1 className="text-3xl text-center font-bold mb-10">Our Products</h1>
-            <div class="divider"></div>
+            <DetailHeader h1="Our Products" h2="What We Provide"></DetailHeader>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
                     parts.slice(0, 3).map(part => <Part key={part._id} part={part}></Part>)

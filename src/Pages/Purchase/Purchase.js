@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+const axios = require('axios').default;
 
 const Purchase = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState({});
+    const [disabled, setDisabled] = useState(false);
 
     useEffect(() => {
         const url = `http://localhost:4000/product/${productId}`
@@ -19,9 +22,35 @@ const Purchase = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const number = event.target.number.value;
-        const order = event.target.order.value;
-        console.log(name, email, order, number);
-    }
+        const orderQuantity = event.target.order.value;
+
+        if (orderQuantity < minOrder) {
+            toast.error(`Your minimum order quantity is ${minOrder} PCS`)
+            return setDisabled(true);
+        }
+
+        if (orderQuantity > qty) {
+            toast.error(`Insufficient stock. You can order ${qty} PCS`)
+            return setDisabled(true);
+        }
+
+        const userEmail = 'masudrezaog@gmail.com'
+        const order = { name, email, number, orderQuantity, userEmail };
+
+        fetch('http://localhost:4000/order', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+
+        toast.success('Your order has been added. Check out now!');
+
+    };
 
 
 
@@ -56,18 +85,14 @@ const Purchase = () => {
                                     <span class="label-text">What is your name?</span>
                                 </label>
                                 <input name='name' type="text" required placeholder="Your Name" class="input input-bordered w-full max-w-xs" />
-                                <label class="label">
-                                    <span class="label-text-alt">Alt label</span>
-                                </label>
+
 
 
                                 <label class="label">
                                     <span class="label-text">What is your email?</span>
                                 </label>
                                 <input name='email' type="text" placeholder="Your Email" class="input input-bordered w-full max-w-xs" />
-                                <label class="label">
-                                    <span class="label-text-alt">Alt label</span>
-                                </label>
+
 
 
 
@@ -75,9 +100,7 @@ const Purchase = () => {
                                     <span class="label-text">Phone number?</span>
                                 </label>
                                 <input name='number' type="text" placeholder="Phone number" class="input input-bordered w-full max-w-xs" />
-                                <label class="label">
-                                    <span class="label-text-alt">Alt label</span>
-                                </label>
+
 
 
 
@@ -85,11 +108,9 @@ const Purchase = () => {
                                     <span class="label-text">How much you want to order?</span>
                                 </label>
                                 <input name='order' defaultValue={minOrder} type="number" placeholder="Order Quantity" class="input input-bordered w-full max-w-xs" />
-                                <label class="label">
-                                    <span class="label-text-alt">Alt label</span>
-                                </label>
 
-                                <input type="submit" className='btn btn-accent w-full max-w-xs mt-5' value="Purchase" />
+
+                                <input type="submit" disabled={disabled} className='btn btn-accent w-full max-w-xs mt-5' value="Purchase" />
                             </form>
                         </div>
 

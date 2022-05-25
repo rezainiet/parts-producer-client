@@ -1,10 +1,28 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
+import Loading from '../Shared/Loading';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    if (true || loading) {
+        <Loading></Loading>
+    }
+
+    const onSubmit = data => {
+        createUserWithEmailAndPassword(data?.email, data?.password);
+        console.log(data);
+    };
 
 
     return (
@@ -62,7 +80,7 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <input type="submit" className='btn btn-accent w-full max-w-xs' value='Register' />
+                        <input type="submit" onClick={onSubmit} className='btn btn-accent w-full max-w-xs' value='Register' />
                         <p className='mt-3'><small>Already have an account? <Link to='/login' className='text-secondary'>Please Login</Link></small></p>
                     </form>
                     <div className="divider">OR</div>

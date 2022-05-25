@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
 
@@ -21,16 +21,11 @@ const Login = () => {
                         <div className="form-control w-full max-w-xs">
                             <div>
                                 <label className="label">
-                                    <span className="label-text">Your Password <span className='text-orange-500'>*</span></span>
+                                    <span className="label-text">Your Email <span className='text-orange-500'>*</span></span>
                                 </label>
-                                <input {...register("password", { required: true })} type="text" placeholder="Your password" className="input input-bordered w-full max-w-xs" />
+                                <input {...register("email", { required: true })} type="text" placeholder="Your email" className="input input-bordered w-full max-w-xs" />
                                 <label className="label">
-                                    {errors.password && <span className="label-text-alt text-warning">Password is required</span>}
-                                    <span className="label-text">Your Email</span>
-                                </label>
-                                <input {...register("password", { required: true })} type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-                                <label className="label">
-                                    {errors.password && <span className="label-text-alt text-warning">This field is required</span>}
+                                    {errors.email && <span className="label-text-alt text-warning">Email is required</span>}
 
                                 </label>
                             </div>
@@ -43,11 +38,6 @@ const Login = () => {
                                 <input {...register("password", { required: true })} type="text" placeholder="Your password" className="input input-bordered w-full max-w-xs" />
                                 <label className="label">
                                     {errors.password && <span className="label-text-alt text-warning">Password is required</span>}
-                                    <span className="label-text">Your Email</span>
-                                </label>
-                                <input {...register("password", { required: true })} type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-                                <label className="label">
-                                    {errors.password && <span className="label-text-alt text-warning">This field is required</span>}
 
                                 </label>
                             </div>

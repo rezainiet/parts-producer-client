@@ -74,40 +74,40 @@ const Purchase = () => {
             </div>
             <div className="divider lg:divider-horizontal">INFO</div>
             <div className="grid flex-grow h-full card bg-base-200 rounded-box place-items-center">
-                <div class="card lg:max-w-lg bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title!</h2>
+                <div className="card lg:max-w-lg bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h2 className="card-title">Card title!</h2>
 
 
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <form onSubmit={handleSubmit}>
-                                <label class="label">
-                                    <span class="label-text">What is your name?</span>
+                                <label className="label">
+                                    <span className="label-text">What is your name?</span>
                                 </label>
-                                <input name='name' type="text" required placeholder="Your Name" class="input input-bordered w-full max-w-xs" />
+                                <input name='name' type="text" required placeholder="Your Name" className="input input-bordered w-full max-w-xs" />
 
 
 
-                                <label class="label">
-                                    <span class="label-text">What is your email?</span>
+                                <label className="label">
+                                    <span className="label-text">What is your email?</span>
                                 </label>
-                                <input name='email' type="text" placeholder="Your Email" class="input input-bordered w-full max-w-xs" />
+                                <input name='email' type="text" placeholder="Your Email" className="input input-bordered w-full max-w-xs" />
 
 
 
 
-                                <label class="label">
-                                    <span class="label-text">Phone number?</span>
+                                <label className="label">
+                                    <span className="label-text">Phone number?</span>
                                 </label>
-                                <input name='number' type="text" placeholder="Phone number" class="input input-bordered w-full max-w-xs" />
+                                <input name='number' type="text" placeholder="Phone number" className="input input-bordered w-full max-w-xs" />
 
 
 
 
-                                <label class="label">
-                                    <span class="label-text">How much you want to order?</span>
+                                <label className="label">
+                                    <span className="label-text">How much you want to order?</span>
                                 </label>
-                                <input name='order' defaultValue={minOrder} type="number" placeholder="Order Quantity" class="input input-bordered w-full max-w-xs" />
+                                <input name='order' defaultValue={minOrder} type="number" placeholder="Order Quantity" className="input input-bordered w-full max-w-xs" />
 
 
                                 <input type="submit" disabled={disabled} className='btn btn-accent w-full max-w-xs mt-5' value="Purchase" />

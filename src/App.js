@@ -10,6 +10,7 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import AddAReview from './Pages/Dashboard/AddAReview';
+import MyProfile from './Pages/Dashboard/MyProfile';
 
 function App() {
   return (
@@ -23,10 +24,14 @@ function App() {
             <Purchase></Purchase>
           </RequireAuth>
         }></Route>
-        <Route path='/dashboard' element={<Dashboard></Dashboard>}>
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard></Dashboard>
+          </RequireAuth>}>
           <Route index element={<MyOrders></MyOrders>} />
           <Route path='myOrders' element={<MyOrders></MyOrders>} />
           <Route path='addAReview' element={<AddAReview></AddAReview>} />
+          <Route path='myProfile' element={<MyProfile></MyProfile>} />
         </Route>
         <Route path='/blogs' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

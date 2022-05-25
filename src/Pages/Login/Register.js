@@ -1,6 +1,6 @@
 import React from 'react';
 import auth from '../../firebase.init';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth"
+import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth"
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Loading from '../Shared/Loading';
@@ -8,13 +8,17 @@ import Loading from '../Shared/Loading';
 const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [sendEmailVerification, sending, error] = useSendEmailVerification(
+        auth
+    );
+
 
     const [
         createUserWithEmailAndPassword,
         user,
         eLoading,
         emailError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const navigate = useNavigate();
@@ -32,7 +36,7 @@ const Register = () => {
 
 
     const onSubmit = async (data) => {
-        await createUserWithEmailAndPassword(data.email, data.password);
+        await createUserWithEmailAndPassword(data.email, data.password, { sendEmailVerification });
         await updateProfile({ displayName: data.name });
         console.log('Update done');
         navigate('/home');

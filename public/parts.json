@@ -1,0 +1,47 @@
+[
+    {
+        "_id": "1",
+        "name": "Logitech Brio 5x Zoom 90° Field View 4K Ultra HD Webcam",
+        "description": [
+            "Height: 1.06 in (27 mm)",
+            "Width: 4.01 in (102 mm)",
+            "4K/30fps (up to 4096 x 2160 pixels)",
+            "1080p/30 or 60 fps (up to 1920 x 1080 pixels)",
+            "Camera mega pixel: 13"
+        ],
+        "img": "https://i.ibb.co/XyvRV3r/webcam.png",
+        "qty": "174",
+        "minOrder": "100",
+        "price": "23500"
+    },
+    {
+        "_id": "2",
+        "name": "BioStar Z490GTA EVO Motherboard",
+        "description": [
+            "Supports 10th/ 11th Generation Intel Core™ Processor",
+            "Intel Z490 single chip architecture",
+            "Supports Intel Optane Technology",
+            "Supports HDMI 4K resolution",
+            "Supports GbE LAN"
+        ],
+        "img": "https://i.ibb.co/r2zZvXj/motherboard2.png",
+        "qty": "150",
+        "minOrder": "100",
+        "price": "19500"
+    },
+    {
+        "_id": "3",
+        "name": "ryzen 9 5950x processor",
+        "description": [
+            "Speed: 3.4GHz Up to 4.9GHz",
+            "L2 Cache: 8MB, L3 Cache: 64MB",
+            "Cores: 16, Threads: 32",
+            "Up to 3200MHz DDR4 Memory",
+            "03 years warranty (No Warranty for Fan or Cooler)"
+        ],
+        "img": "https://i.ibb.co/m4Kp4Zs/ryzen.png",
+        "qty": "250",
+        "minOrder": "20",
+        "price": "70000"
+    }
+]

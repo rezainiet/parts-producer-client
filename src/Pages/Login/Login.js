@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
@@ -10,19 +10,21 @@ const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [
         signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
+        eUser,
+        eLoading,
+        emailError,
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
 
     let signInErrorMessage;
 
-    if (error || gError) {
-        signInErrorMessage = error?.message || gError?.message;
+    if (error || gError || emailError) {
+        signInErrorMessage = error?.message || gError?.message || emailError?.message;
     };
 
-    if (loading || gLoading) {
+    if (loading || gLoading || eLoading) {
         return <Loading></Loading>
     };
 
@@ -31,6 +33,9 @@ const Login = () => {
         console.log(data)
     };
 
+    if (eUser || user || gUser) {
+        navigate('/')
+    }
 
     return (
         <div className="grid items-center justify-items-center mt-10 bg-base-200 py-10">

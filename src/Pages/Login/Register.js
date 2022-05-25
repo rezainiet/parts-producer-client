@@ -1,29 +1,34 @@
 import React from 'react';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth"
-import { Link } from 'react-router-dom';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth"
+import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Loading from '../Shared/Loading';
 
 const Register = () => {
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
+        eUser,
+        eLoading,
+        emailError,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     let signInErrorMessage;
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [user, loading, error] = useAuthState(auth);
 
-    if (error || gError) {
+    if (error || gError || emailError) {
         signInErrorMessage = gError?.message || error?.message;
     };
 
-    if (loading || gLoading) {
+    if (loading || gLoading || eLoading) {
         return <Loading></Loading>
+    }
+
+    if (eUser || user || gUser) {
+        Navigate('/')
     }
 
     const onSubmit = data => {

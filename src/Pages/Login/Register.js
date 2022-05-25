@@ -1,43 +1,45 @@
 import React from 'react';
 import auth from '../../firebase.init';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth"
-import { Link, Navigate } from 'react-router-dom';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth"
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Loading from '../Shared/Loading';
 
 const Register = () => {
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const [
         createUserWithEmailAndPassword,
-        eUser,
+        user,
         eLoading,
         emailError,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const navigate = useNavigate();
 
     let signInErrorMessage;
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [user, loading, error] = useAuthState(auth);
 
-    if (error || gError || emailError) {
-        signInErrorMessage = gError?.message || error?.message;
+    if (gLoading || eLoading || updating) {
+        return <Loading></Loading>
     };
 
-    if (loading || gLoading || eLoading) {
-        return <Loading></Loading>
-    }
+    if (gError || emailError || updateError) {
+        signInErrorMessage = gError?.message || emailError?.message || updateError?.message;
+    };
 
-    if (eUser || user || gUser) {
-        Navigate('/')
-    }
 
-    const onSubmit = data => {
-        createUserWithEmailAndPassword(data.email, data.password);
-        console.log(data)
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        console.log('Update done');
+        navigate('/home');
     };
 
     return (
-        <div className='flex h-screen justify-center items-center'>
+        <div className='grid items-center justify-items-center mt-10 bg-base-200 py-10'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-center text-2xl font-bold">Sign Up</h2>

@@ -13,7 +13,7 @@ const Purchase = () => {
     const [disabled, setDisabled] = useState(false);
 
 
-
+    console.log(user);
     useEffect(() => {
         const url = `http://localhost:4000/product/${productId}`
         fetch(url)
@@ -87,7 +87,7 @@ const Purchase = () => {
             <div className="grid flex-grow h-full card bg-base-200 rounded-box place-items-center">
                 <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <h2 className="card-title">Card title!</h2>
+                        <h2 className="card-title">Purchase Your Order!</h2>
 
 
                         <div className="form-control w-full max-w-xs">
@@ -95,14 +95,14 @@ const Purchase = () => {
                                 <label className="label">
                                     <span className="label-text">What is your name?</span>
                                 </label>
-                                <input name='name' type="text" required placeholder="Your Name" className="input input-bordered w-full max-w-xs" />
+                                <input name='name' type="text" required defaultValue={user?.displayName} disabled className="input input-bordered w-full max-w-xs" />
 
 
 
                                 <label className="label">
                                     <span className="label-text">What is your email?</span>
                                 </label>
-                                <input name='email' type="text" placeholder="Your Email" className="input input-bordered w-full max-w-xs" />
+                                <input name='email' type="text" disabled defaultValue={user?.email} className="input input-bordered w-full max-w-xs" />
 
 
 

@@ -33,9 +33,15 @@ const Purchase = () => {
             toast.error(`Insufficient stock. You can order ${qty} PCS`)
             return setDisabled(true);
         }
+<<<<<<< HEAD
         const totalCost = parseInt(orderQuantity) * price;
         const userEmail = 'masudrezaog@gmail.com'
         const order = { name, email, number, orderQuantity, userEmail, totalCost };
+=======
+
+        const userEmail = 'masudrezaog@gmail.com'
+        const order = { name, email, number, orderQuantity, userEmail };
+>>>>>>> 4e35940050d14ad34d8006386165114a42f3c6ca
 
         fetch('http://localhost:4000/order', {
             method: "POST",
@@ -76,7 +82,11 @@ const Purchase = () => {
             <div className="grid flex-grow h-full card bg-base-200 rounded-box place-items-center">
                 <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                     <div className="card-body">
+<<<<<<< HEAD
                         <h2 className="card-title">Purchase your product!</h2>
+=======
+                        <h2 className="card-title">Card title!</h2>
+>>>>>>> 4e35940050d14ad34d8006386165114a42f3c6ca
 
 
                         <div className="form-control w-full max-w-xs">

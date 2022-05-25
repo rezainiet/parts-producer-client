@@ -5,7 +5,10 @@ import Purchase from './Pages/Purchase/Purchase';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './Pages/Login/Login';
+<<<<<<< HEAD
 import Register from './Pages/Login/Register';
+=======
+>>>>>>> 4e35940050d14ad34d8006386165114a42f3c6ca
 
 function App() {
   return (
@@ -17,7 +20,10 @@ function App() {
         <Route path='/dashboard' element={<Home></Home>}></Route>
         <Route path='/blogs' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+<<<<<<< HEAD
         <Route path='/register' element={<Register></Register>}></Route>
+=======
+>>>>>>> 4e35940050d14ad34d8006386165114a42f3c6ca
       </Routes>
       <ToastContainer></ToastContainer>
     </div>

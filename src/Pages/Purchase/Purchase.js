@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 const axios = require('axios').default;
 
 const Purchase = () => {
+    const [user, loading] = useAuthState(auth);
     const { productId } = useParams();
     const [product, setProduct] = useState({});
     const [disabled, setDisabled] = useState(false);
+
+
 
     useEffect(() => {
         const url = `http://localhost:4000/product/${productId}`
@@ -16,6 +22,10 @@ const Purchase = () => {
     }, []);
 
     const { name, description, img, price, qty, minOrder } = product;
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();

@@ -1,11 +1,35 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+    let signInErrorMessage;
+
+    if (error || gError) {
+        signInErrorMessage = error?.message || gError?.message;
+    };
+
+    if (loading || gLoading) {
+        return <Loading></Loading>
+    };
+
+    const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password);
+        console.log(data)
+    };
 
 
     return (
@@ -42,12 +66,15 @@ const Login = () => {
                                 </label>
                             </div>
                         </div>
-
+                        <p className="text-red-500 text-xs">{signInErrorMessage}</p>
                         <input type="submit" className='btn btn-accent w-full max-w-xs' value='login' />
                         <p className='mt-3'><small>Don't have an account? <Link to='/register' className='text-secondary'>Please Register</Link></small></p>
                     </form>
                     <div className="divider">OR</div>
-                    <button className="btn no-animation">Continue With Google</button>
+                    <button
+                        onClick={() => signInWithGoogle()}
+                        className="btn btn-outline"
+                    >Continue With Google</button>
                 </div>
             </div>
         </div>

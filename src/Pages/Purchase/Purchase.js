@@ -29,10 +29,11 @@ const Purchase = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const name = event.target.name.value;
+        const userName = event.target.name.value;
         const email = event.target.email.value;
         const number = event.target.number.value;
         const orderQuantity = event.target.order.value;
+        const productName = name;
 
         if (orderQuantity < minOrder) {
             toast.error(`Your minimum order quantity is ${minOrder} PCS`)
@@ -46,7 +47,7 @@ const Purchase = () => {
         const totalCost = parseInt(orderQuantity) * parseInt(price);
 
         const userEmail = 'masudrezaog@gmail.com'
-        const order = { name, email, number, orderQuantity, userEmail, totalCost };
+        const order = { productName, userName, email, number, orderQuantity, userEmail, totalCost };
 
         fetch('http://localhost:4000/order', {
             method: "POST",

@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
 
     useEffect(() => {
         if (totalCost) {
-            fetch('http://localhost:4000/create-payment-intent', {
+            fetch('https://parts-producer.herokuapp.com/create-payment-intent', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -86,7 +86,7 @@ const CheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id,
             }
-            fetch(`http://localhost:4000/getPayment/${order._id}`, {
+            fetch(`https://parts-producer.herokuapp.com/getPayment/${order._id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

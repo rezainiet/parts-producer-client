@@ -10,7 +10,7 @@ const MyOrders = () => {
     const authEmail = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:4000/order/${authEmail}`)
+        fetch(`https://parts-producer.herokuapp.com/order/${authEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [setOrders]);

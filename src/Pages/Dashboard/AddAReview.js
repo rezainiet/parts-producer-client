@@ -22,7 +22,7 @@ const AddAReview = () => {
         const ratings = value;
 
         const review = { text, ratings, email: user?.email, name: user?.displayName };
-        fetch('http://localhost:4000/review', {
+        fetch('https://parts-producer.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

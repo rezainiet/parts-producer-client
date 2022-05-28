@@ -14,7 +14,7 @@ const AddProduct = () => {
             price: parseInt(event.target.price.value),
         }
 
-        fetch('http://localhost:4000/product', {
+        fetch('https://parts-producer.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -16,7 +16,7 @@ const MyOrder = ({ order, index }) => {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        fetch(`http://localhost:4000/deleteOrder/${orderId}`, {
+                        fetch(`https://parts-producer.herokuapp.com/deleteOrder/${orderId}`, {
                             method: 'DELETE',
                             headers: {
                                 'content-type': 'application/json'

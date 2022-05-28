@@ -14,7 +14,7 @@ const ProductRow = ({ product, index, refetch }) => {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        fetch(`http://localhost:4000/product/${id}`, {
+                        fetch(`https://parts-producer.herokuapp.com/product/${id}`, {
                             method: 'DELETE',
                             headers: {
                                 'content-type': 'application/json'

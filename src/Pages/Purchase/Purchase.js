@@ -15,7 +15,7 @@ const Purchase = () => {
 
     console.log(user);
     useEffect(() => {
-        const url = `http://localhost:4000/product/${productId}`
+        const url = `https://parts-producer.herokuapp.com/product/${productId}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
@@ -49,7 +49,7 @@ const Purchase = () => {
         const userEmail = user?.email;
         const order = { productName, userName, email, img, number, orderQuantity, userEmail, totalCost };
 
-        fetch('http://localhost:4000/order', {
+        fetch('https://parts-producer.herokuapp.com/order', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomepageHero = () => {
     const bgImageStyle = {
@@ -17,7 +18,7 @@ const HomepageHero = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Parts Producer</h1>
                     <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn btn-primary">Explore Us</button>
+                    <button className="btn btn-primary"><Link to='#contact'>Contact Us</Link></button>
                 </div>
             </div>
         </div >

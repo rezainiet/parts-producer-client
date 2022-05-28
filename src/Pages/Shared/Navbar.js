@@ -14,11 +14,12 @@ const Navbar = () => {
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
+        <li><Link to='/MyPortfolio'>My Appointment</Link></li>
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }
         {
-            user && <button className="btn btn-primary">{user?.displayName}</button>
+            user && <button className="btn btn-primary">{user?.displayName || 'Update Name'}</button>
         }
         {
             user ? <button className="btn btn-ghost" onClick={logout} >Sign Out</button> : <li><Link to='/login'>Login</Link></li>

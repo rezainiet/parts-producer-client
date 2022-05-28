@@ -12,20 +12,23 @@ const CheckoutForm = ({ order }) => {
     const { _id, totalCost, userEmail, userName } = order;
 
     useEffect(() => {
-        fetch('http://localhost:4000/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ totalCost })
+        if (totalCost) {
+            fetch('http://localhost:4000/create-payment-intent', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ totalCost })
 
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data?.clientSecret) {
-                    setClientSecret(data.clientSecret);
-                }
-            });
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data?.clientSecret) {
+                        setClientSecret(data.clientSecret);
+                    }
+                });
+        };
+
     }, [totalCost])
 
     const handleSubmit = async (event) => {

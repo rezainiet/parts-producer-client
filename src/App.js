@@ -20,12 +20,15 @@ import {
 } from 'react-query'
 import Payment from './Pages/Dashboard/Payment';
 import AllUsers from './Pages/Dashboard/AllUsers';
+import RequireAdmin from './Pages/Login/RequireAdmin';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
+import AddProduct from './Pages/Dashboard/AddProduct';
 
 function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className='max-w-7xl mx-auto px-10'>
+    <div className='max-w-7xl mx-auto'>
       <QueryClientProvider client={queryClient}>
         <Navbar></Navbar>
         <Routes>
@@ -40,12 +43,20 @@ function App() {
             <RequireAuth>
               <Dashboard></Dashboard>
             </RequireAuth>}>
-            <Route index element={<MyOrders></MyOrders>} />
+            {/* <Route index element={<Dashboard></Dashboard>} /> */}
             <Route path='myOrders' element={<MyOrders></MyOrders>} />
             <Route path='payment/:id' element={<Payment></Payment>} />
             <Route path='addAReview' element={<AddAReview></AddAReview>} />
             <Route path='myProfile' element={<MyProfile></MyProfile>} />
-            <Route path='allUsers' element={<AllUsers></AllUsers>} />
+            <Route path='allUsers' element={<RequireAdmin>
+              <AllUsers></AllUsers>
+            </RequireAdmin>} />
+            <Route path='manageOrders' element={<RequireAdmin>
+              <ManageOrders></ManageOrders>
+            </RequireAdmin>} />
+            <Route path='addProduct' element={<RequireAdmin>
+              <AddProduct></AddProduct>
+            </RequireAdmin>} />
           </Route>
           <Route path='/blogs' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
@@ -53,7 +64,7 @@ function App() {
         </Routes>
         <ToastContainer></ToastContainer>
       </QueryClientProvider>
-    </div>
+    </div >
   );
 }
 

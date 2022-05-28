@@ -66,8 +66,6 @@ const Purchase = () => {
 
     };
 
-
-
     return (
         <div className="flex flex-col w-full lg:flex-row">
             <div className="grid flex-grow h-full card bg-base-100 rounded-box place-items-center">

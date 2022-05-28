@@ -12,7 +12,7 @@ const Parts = () => {
     }, []);
 
     return (
-        <div>
+        <div className='lg:px-10 md:px-5 sm:px-3'>
             <DetailHeader h1="Our Products" h2="What We Provide"></DetailHeader>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {

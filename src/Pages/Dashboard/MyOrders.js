@@ -13,7 +13,7 @@ const MyOrders = () => {
         fetch(`http://localhost:4000/order/${authEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [orders]);
+    }, [setOrders]);
 
     console.log(orders);
 

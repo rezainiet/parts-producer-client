@@ -46,8 +46,8 @@ const Purchase = () => {
         }
         const totalCost = parseInt(orderQuantity) * parseInt(price);
 
-        const userEmail = 'masudrezaog@gmail.com'
-        const order = { productName, userName, email, number, orderQuantity, userEmail, totalCost };
+        const userEmail = user?.email;
+        const order = { productName, userName, email, img, number, orderQuantity, userEmail, totalCost };
 
         fetch('http://localhost:4000/order', {
             method: "POST",
@@ -58,9 +58,11 @@ const Purchase = () => {
             body: JSON.stringify(order)
         })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => {
+                toast.success('Your order has been added. Check out now!');
+                console.log(data)
+            });
 
-        toast.success('Your order has been added. Check out now!');
 
     };
 
@@ -106,14 +108,10 @@ const Purchase = () => {
                                 <input name='email' type="text" disabled defaultValue={user?.email} className="input input-bordered w-full max-w-xs" />
 
 
-
-
                                 <label className="label">
                                     <span className="label-text">Phone number?</span>
                                 </label>
-                                <input name='number' type="text" placeholder="Phone number" className="input input-bordered w-full max-w-xs" />
-
-
+                                <input name='number' type="text" placeholder="Phone number" required className="input input-bordered w-full max-w-xs" />
 
 
                                 <label className="label">

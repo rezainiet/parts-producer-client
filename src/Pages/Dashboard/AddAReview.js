@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddAReview = () => {
+    const [user, loading] = useAuthState(auth);
     const min = 1;
     const max = 5;
 
@@ -13,10 +17,25 @@ const AddAReview = () => {
 
 
     const handleSubmitReview = (event) => {
-        const review = event.target.review.value;
-        const ratings = value;
         event.preventDefault();
-        console.log('clicked', review, ratings);
+        const text = event.target.review.value;
+        const ratings = value;
+
+        const review = { text, ratings, email: user?.email, name: user?.displayName };
+        fetch('http://localhost:4000/review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Your Review Submitted Successfully!')
+                console.log(data);
+                event.target.review.value = '';
+            });
+        console.log('clicked', text, ratings);
     };
 
 

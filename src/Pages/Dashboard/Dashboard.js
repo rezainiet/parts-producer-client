@@ -19,6 +19,9 @@ const Dashboard = () => {
                         <li className='bg-base-200'><Link to="myOrders">My Orders</Link></li>
                         <li className='bg-base-200'><Link to="addAReview">Add A Review</Link></li>
                         <li className='bg-base-200'><Link to="myProfile">My Profile</Link></li>
+
+
+                        <li className='bg-base-200'><Link to="allUsers">All Users</Link></li>
                     </ul>
 
                 </div>

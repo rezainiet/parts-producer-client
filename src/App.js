@@ -19,6 +19,7 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import Payment from './Pages/Dashboard/Payment';
+import AllUsers from './Pages/Dashboard/AllUsers';
 
 function App() {
   const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ function App() {
             <Route path='payment/:id' element={<Payment></Payment>} />
             <Route path='addAReview' element={<AddAReview></AddAReview>} />
             <Route path='myProfile' element={<MyProfile></MyProfile>} />
+            <Route path='allUsers' element={<AllUsers></AllUsers>} />
           </Route>
           <Route path='/blogs' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>

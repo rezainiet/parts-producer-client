@@ -95,8 +95,7 @@ const CheckoutForm = ({ order }) => {
                     console.log(data)
                 });
         }
-
-    }
+    };
 
     return (
         <>

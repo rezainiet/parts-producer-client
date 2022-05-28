@@ -27,6 +27,9 @@ const Dashboard = () => {
                     <label for="dashboard-drawer" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                         {
+                            admin && <li className='bg-base-200'><Link to="manageProduct">Manage Product</Link></li>
+                        }
+                        {
                             admin && <li className='bg-base-200'><Link to="addProduct">Add Product</Link></li>
                         }
                         {

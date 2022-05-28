@@ -23,6 +23,8 @@ import AllUsers from './Pages/Dashboard/AllUsers';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
+import ManageProduct from './Pages/Dashboard/ManageProduct';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   const queryClient = new QueryClient();
@@ -57,10 +59,14 @@ function App() {
             <Route path='addProduct' element={<RequireAdmin>
               <AddProduct></AddProduct>
             </RequireAdmin>} />
+            <Route path='manageProduct' element={<RequireAdmin>
+              <ManageProduct></ManageProduct>
+            </RequireAdmin>} />
           </Route>
           <Route path='/blogs' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/register' element={<Register></Register>}></Route>
+          <Route path='*' element={<NotFound></NotFound>}></Route>
         </Routes>
         <ToastContainer></ToastContainer>
       </QueryClientProvider>

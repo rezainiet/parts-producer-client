@@ -19,9 +19,9 @@ const Payment = () => {
     }, [setOrder]);
     const { productName, totalCost, img, orderQuantity, number, email } = order;
     return (
-        <div class="flex flex-col w-full border-opacity-50">
-            <div class="grid card bg-base-300 rounded-box place-items-center">
-                <div class="grid  card bg-base-300 py-5 rounded-box place-items-center">
+        <div className="flex flex-col w-full border-opacity-50">
+            <div className="grid card bg-base-300 rounded-box place-items-center">
+                <div className="grid  card bg-base-300 py-5 rounded-box place-items-center">
                     <div className="card lg:max-w-md bg-base-100 shadow-xl">
                         <figure><img src={img} alt="productImage" /></figure>
                         <div className="card-body">
@@ -33,8 +33,8 @@ const Payment = () => {
                     </div>
                 </div>
             </div>
-            <div class="divider">Pay</div>
-            <div class="card flex-shrink-0 p-10 w-50 max-w-md shadow-2xl bg-base-200">
+            <div className="divider">Pay</div>
+            <div className="card flex-shrink-0 p-10 w-50 max-w-md shadow-2xl bg-base-200">
                 <Elements stripe={stripePromise}>
                     <CheckoutForm order={order} />
                 </Elements>

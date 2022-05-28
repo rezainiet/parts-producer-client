@@ -25,6 +25,7 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
 import NotFound from './Pages/Shared/NotFound';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   const queryClient = new QueryClient();
@@ -63,7 +64,7 @@ function App() {
               <ManageProduct></ManageProduct>
             </RequireAdmin>} />
           </Route>
-          <Route path='/blogs' element={<Home></Home>}></Route>
+          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/register' element={<Register></Register>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>

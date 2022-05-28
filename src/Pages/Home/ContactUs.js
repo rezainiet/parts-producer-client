@@ -4,7 +4,7 @@ const ContactUs = () => {
     return (
         <div className='bg-accent px-10 py-14 mt-10' id='contact'>
             <div className='text-center pb-14 text-white'>
-                <p className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br font-semibold from-accent to-secondary'>
+                <p className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent to-secondary'>
                     Contact Us
                 </p>
                 <h1 className='text-4xl font-bold'>Stay connected with us</h1>

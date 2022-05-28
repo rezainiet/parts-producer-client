@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const MyOrder = ({ order, index }) => {
-    const navigate = useNavigate();
 
     const handleCancelOrder = (orderId) => {
 

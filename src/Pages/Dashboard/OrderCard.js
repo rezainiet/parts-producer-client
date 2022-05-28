@@ -2,7 +2,7 @@ import React from 'react';
 
 const OrderCard = ({ order, index }) => {
     const { totalCost, email, orderQuantity, userName, paid } = order;
-    console.log(order);
+    // console.log(order);
     return (
         <tr>
             <th>{index + 1}</th>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 import MyOrder from './MyOrder';
 
 const MyOrders = () => {
@@ -15,7 +16,7 @@ const MyOrders = () => {
             .then(data => setOrders(data))
     }, [setOrders]);
 
-    console.log(orders);
+    // console.log(orders);
 
     return (
         <div className="mockup-window border bg-base-300">

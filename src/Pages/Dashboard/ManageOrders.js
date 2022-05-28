@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import OrderCard from './OrderCard';
 import Loading from '../../Pages/Shared/Loading'

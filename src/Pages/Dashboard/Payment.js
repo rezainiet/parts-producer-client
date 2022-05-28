@@ -13,7 +13,7 @@ const Payment = () => {
         fetch(`https://parts-producer.herokuapp.com/payment/${id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(order)
+                // console.log(order)
                 setOrder(data);
             });
     }, [setOrder]);

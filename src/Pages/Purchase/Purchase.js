@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-const axios = require('axios').default;
 
 const Purchase = () => {
     const [user, loading] = useAuthState(auth);
@@ -13,7 +12,7 @@ const Purchase = () => {
     const [disabled, setDisabled] = useState(false);
 
 
-    console.log(user);
+    // console.log(user);
     useEffect(() => {
         const url = `https://parts-producer.herokuapp.com/product/${productId}`
         fetch(url)
@@ -60,7 +59,7 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('Your order has been added. Check out now!');
-                console.log(data)
+                // console.log(data)
             });
 
 

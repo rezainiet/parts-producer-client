@@ -26,7 +26,7 @@ const MyProfile = () => {
 
 
         const updateUser = { phone, education, location, linkedIn, image, email, name };
-        console.log(phone, education, location, linkedIn, image);
+        // console.log(phone, education, location, linkedIn, image);
 
 
         fetch(`https://parts-producer.herokuapp.com/user/${email}`,

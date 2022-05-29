@@ -14,7 +14,7 @@ const Navbar = () => {
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/MyPortfolio'>My Appointment</Link></li>
+        <li><Link to='/MyPortfolio'>My Portfolio</Link></li>
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }

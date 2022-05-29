@@ -17,7 +17,7 @@ const HomepageHero = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Parts Producer</h1>
-                    <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="mb-5">Hello, you will find almost all of the parts of Computer. We always try to do our best.</p>
                     <button className="btn btn-primary"><Link to='#contact'>Contact Us</Link></button>
                 </div>
             </div>

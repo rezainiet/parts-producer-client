@@ -4,7 +4,7 @@ import Footer from '../Shared/Footer';
 const Blogs = () => {
     return (
         <div>
-            <div className='grid grid-cols-2 gap-10 my-32'>
+            <div className='grid md:grid-cols-1 lg:gird-cols-2 sm:grid-cols-1 gap-10 my-32'>
                 <div className='border-2 p-10 rounded-2xl'>
                     <h1 className='text-2xl font-bold mb-5'>Q.1: How will you improve the performance of a React Application?</h1>
                     <p className='text-xl'>I can improve the performance of a react application by following this steps.

@@ -52,7 +52,9 @@ const MyProfile = () => {
                                 <h2 className="font-semibold text-2xl text-center">My Profile</h2>
                                 <div className="avatar my-5">
                                     <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                        <img src="https://api.lorem.space/image/face?hash=3174" />
+                                        {
+                                            user.photoURL ? <img src={user.photoURL} alt="userPicture" /> : <img src="https://api.lorem.space/image/face?hash=3174" />
+                                        }
                                     </div>
                                 </div>
                                 <p><span className='font-semibold'>Name:</span> <span>{user?.displayName}</span></p>

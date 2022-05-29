@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <div className='bg-accent px-10 py-14 mt-10' id='contact'>
+        <div className='bg-accent rounded-xl px-10 py-14 mt-10' id='contact'>
             <div className='text-center pb-14 text-white'>
                 <p className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent to-secondary'>
                     Contact Us

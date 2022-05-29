@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OrderCard = ({ order, index }) => {
-    const { totalCost, email, orderQuantity, userName, paid } = order;
+    const { totalCost, email, orderQuantity, userName } = order;
     // console.log(order);
     return (
         <tr>

@@ -3,7 +3,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import { toast } from 'react-toastify';
 
 const ProductRow = ({ product, index, refetch }) => {
-    const { _id, name, qty, price } = product;
+    const { name, qty, price } = product;
 
 
     const handleDelete = (id) => {
